@@ -1,6 +1,6 @@
 # Dub Better Auth
 
-Dub Better Auth is a plugin for [Dub](https://dub.sh) that allows you to track events in your BetterAuth application.
+Dub Better Auth is a plugin for [Dub](https://dub.co) that allows you to [track conversion events](https://dub.co/docs/conversions/quickstart) in your BetterAuth application.
 
 ## Installation
 
