@@ -8,33 +8,26 @@ export interface DubConfig {
     /**
      * Dub instance
      */
-    dub: Dub
+    dubClient: Dub
     /**
-     * Events to track
+     * Disable dub tracking for sign up events
+     * 
+     * @default false
      */
-    events?: {
-        /**
-         * Track sign up events
-         */
-        signUp?: {
-            /**
-             * Enable sign up events
-             * 
-             * @default true
-             */
-            enabled: boolean,
-            /**
-             * Event name
-             * 
-             * @default "Sign Up"
-             */
-            eventName?: string,
-            /**
-             * Custom track function
-             */
-            customTrack?: (user: User, ctx: GenericEndpointContext) => Promise<void>
-        },
-    },
+    disableLeadTracking?: boolean
+    /**
+     * Event name for sign up leads
+     * 
+     * @default "Sign Up"
+    */
+    leadEventName?: string,
+    /**
+     * Custom lead track function
+     */
+    customLeadTrack?: (user: User, ctx: GenericEndpointContext) => Promise<void>
+    /**
+     * Dub OAuth configuration
+     */
     oauth?: {
         /**
          * Client ID
@@ -53,8 +46,8 @@ export interface DubConfig {
     }
 }
 
-export const dubTracker = (opts: DubConfig) => {
-    const dub = opts.dub
+export const dubAnalytics = (opts: DubConfig) => {
+    const dub = opts.dubClient
     const oauth = opts.oauth ? genericOAuth({
         config: [{
             providerId: "dub",
@@ -100,13 +93,13 @@ export const dubTracker = (opts: DubConfig) => {
                                     if (!dubId) {
                                         return
                                     }
-                                    if (opts.events?.signUp?.enabled && ctx) {
-                                        if (opts.events.signUp.customTrack) {
-                                            await opts.events.signUp.customTrack(user, ctx)
+                                    if (!opts.disableLeadTracking && ctx) {
+                                        if (opts.customLeadTrack) {
+                                            await opts.customLeadTrack(user, ctx)
                                         } else {
                                             await dub.track.lead({
                                                 clickId: dubId,
-                                                eventName: opts.events?.signUp?.eventName || "Sign Up",
+                                                eventName: opts.leadEventName || "Sign Up",
                                                 externalId: user.id,
                                                 customerName: user.name,
                                                 customerEmail: user.email,

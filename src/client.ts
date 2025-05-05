@@ -1,10 +1,10 @@
 import { BetterAuthClientPlugin } from "better-auth"
-import { dubTracker } from "."
+import { dubAnalytics } from "."
 
 
-export const dubTrackerClient = () => {
+export const dubAnalyticsClient = () => {
     return {
-        id: "dub-tracker",
-        $InferServerPlugin: {} as ReturnType<typeof dubTracker>
+        id: "dub-analytics",
+        $InferServerPlugin: {} as ReturnType<typeof dubAnalytics>
     } satisfies BetterAuthClientPlugin
 }

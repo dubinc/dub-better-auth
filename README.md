@@ -10,10 +10,10 @@ npm install @dub/better-auth
 
 ## Usage
 
-### Server
+### Lead Tracking
 
 ```ts
-import { dubTracker } from "@dub/better-auth";
+import { dubAnalytics } from "@dub/better-auth";
 import { betterAuth } from "better-auth";
 
 const dub = new Dub({
@@ -22,25 +22,38 @@ const dub = new Dub({
 
 const betterAuth = betterAuth({
   plugins: [
-    dubTracker({
-      dub,
-      events: {
-        signUp: {
-          enabled: true, // Enable sign up events
-        },
+    dubAnalytics({
+      dubClient: dub,
+      leadEventName: "Sign Up",
+      customLeadTrack: async (user, ctx) => {
+        console.log("Custom lead track function");
       },
-    }),
+    }),s
   ],
 });
 ```
 
-### Client
+### OAuth
+
+Dub Better Auth supports OAuth for authentication. You can configure the OAuth client ID and client secret in the `dubAnalytics` function.
 
 ```ts
-import { dubTrackerClient } from "@dub/better-auth";
-import { createAuthClient } from "better-auth/client"; //react, vue, svelte, solid, etc.
+dubAnalytics({
+  dubClient: dub,
+  oauth: {
+    clientId: "your-client-id",
+    clientSecret: "your-client-secret",
+  },
+});
+```
+
+And in the client, you need to use the `dubAnalyticsClient` plugin.
+
+```ts
+import { createAuthClient } from "better-auth/client"
+import { dubAnalyticsClient } from "@dub/better-auth/client"
 
 const authClient = createAuthClient({
-  plugins: [dubTrackerClient()],
+  plugins: [dubAnalyticsClient()],
 });
 ```
