@@ -1,7 +1,9 @@
-import { createEndpoint, z } from "better-auth";
+import { logger } from "better-auth";
+import { createAuthEndpoint } from "better-auth/api";
 import { type BetterAuthPlugin, genericOAuth } from "better-auth/plugins";
 import type { GenericEndpointContext, User } from "better-auth/types";
 import type { Dub } from "dub";
+import { z } from "zod";
 
 export interface DubConfig {
 	/**
@@ -64,7 +66,7 @@ export const dubAnalytics = (opts: DubConfig) => {
 	return {
 		id: "dub",
 		endpoints: {
-			linkDub: createEndpoint(
+			linkDub: createAuthEndpoint(
 				"/dub/link",
 				{
 					method: "POST",
@@ -104,14 +106,18 @@ export const dubAnalytics = (opts: DubConfig) => {
 										if (opts.customLeadTrack) {
 											await opts.customLeadTrack(user, ctx);
 										} else {
-											await dub.track.lead({
-												clickId: dubId,
-												eventName: opts.leadEventName || "Sign Up",
-												externalId: user.id,
-												customerName: user.name,
-												customerEmail: user.email,
-												customerAvatar: user.image,
-											});
+											await dub.track
+												.lead({
+													clickId: dubId,
+													eventName: opts.leadEventName || "Sign Up",
+													externalId: user.id,
+													customerName: user.name,
+													customerEmail: user.email,
+													customerAvatar: user.image,
+												})
+												.catch((e) => {
+													logger.error(e);
+												});
 										}
 										ctx?.setCookie("dub_id", "", {
 											expires: new Date(0),

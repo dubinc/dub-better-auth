@@ -19,9 +19,7 @@ import { dubAnalytics } from "@dub/better-auth";
 import { betterAuth } from "better-auth";
 import { Dub } from "dub";
 
-const dub = new Dub({
-  apiKey: "your-api-key",
-});
+const dub = new Dub();
 
 const betterAuth = betterAuth({
   plugins: [
