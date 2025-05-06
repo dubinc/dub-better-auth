@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "Dub Better Auth Plugin",
   "scripts": {
-    "build": "unbuild",
-    "publish": "pnpm run build && npm publish"
+    "build": "unbuild"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
