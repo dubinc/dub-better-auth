@@ -12,9 +12,12 @@ npm install @dub/better-auth
 
 ### Lead Tracking
 
+By default, the plugin will track sign up events as leads. You can disable this by setting `disableLeadTracking` to `true`.
+
 ```ts
 import { dubAnalytics } from "@dub/better-auth";
 import { betterAuth } from "better-auth";
+import { Dub } from "dub";
 
 const dub = new Dub({
   apiKey: "your-api-key",
@@ -54,6 +57,13 @@ const authClient = createAuthClient({
 });
 ```
 
+To link account with Dub, you need to use the `dub.link`.
+
+```ts
+const response = await authClient.dub.link({
+  callbackURL: "/dashboard", // URL to redirect to after linking
+});
+```
 
 ## Options
 
