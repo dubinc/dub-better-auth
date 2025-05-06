@@ -1,6 +1,6 @@
-# Dub Better Auth
+# Dub Analytics - Better Auth Plugin
 
-Dub Better Auth is a plugin for [Dub](https://dub.co) that allows you to [track conversion events](https://dub.co/docs/conversions/quickstart) in your BetterAuth application.
+Dub Analytics Plugin is a plugin for [Dub](https://dub.co) that allows you to [track conversion events](https://dub.co/docs/conversions/quickstart) in your [Better Auth](https://better-auth.com) application.
 
 ## Installation
 
@@ -24,11 +24,7 @@ const betterAuth = betterAuth({
   plugins: [
     dubAnalytics({
       dubClient: dub,
-      leadEventName: "Sign Up",
-      customLeadTrack: async (user, ctx) => {
-        console.log("Custom lead track function");
-      },
-    }),s
+    }),
   ],
 });
 ```
@@ -57,3 +53,43 @@ const authClient = createAuthClient({
   plugins: [dubAnalyticsClient()],
 });
 ```
+
+
+## Options
+
+### `dubClient`
+
+The Dub client instance.
+
+### `disableLeadTracking`
+
+Disable lead tracking for sign up events.
+
+### `leadEventName`
+
+Event name for sign up leads.
+
+### `customLeadTrack`
+
+Custom lead track function.
+
+### `oauth`
+
+Dub OAuth configuration.
+
+### `oauth.clientId`
+
+Client ID for Dub OAuth.
+
+### `oauth.clientSecret`
+
+Client secret for Dub OAuth.
+
+### `oauth.pkce`
+
+Enable PKCE for Dub OAuth.
+
+
+## License
+
+MIT
