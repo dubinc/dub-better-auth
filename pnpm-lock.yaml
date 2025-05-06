@@ -7,13 +7,16 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       better-auth:
         specifier: ^1.2.7
         version: 1.2.7
       dub:
         specifier: ^0.61.8
         version: 0.61.8(zod@3.24.3)
+      typescript:
+        specifier: ^5.5.4
+        version: 5.8.3
       unbuild:
         specifier: ^3.5.0
         version: 3.5.0(typescript@5.8.3)
