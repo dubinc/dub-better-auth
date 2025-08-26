@@ -16,8 +16,8 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7
       dub:
-        specifier: ^0.61.8
-        version: 0.61.8(zod@3.24.4)
+        specifier: ^0.66.1
+        version: 0.66.1
       typescript:
         specifier: ^5.5.4
         version: 5.8.3
@@ -581,15 +581,8 @@ packages:
   domutils@3.2.2:
     resolution: {integrity: sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==}
 
-  dub@0.61.8:
-    resolution: {integrity: sha512-ukTJJC7YRad3FqlyUfVQ3yTb0uduNOS0WaNmNcQq+D+rZSZRGF4Zkn1bzuFvNxruKp4QHEuhxHeXAYmou/Tmsw==}
-    hasBin: true
-    peerDependencies:
-      '@modelcontextprotocol/sdk': '>=1.5.0 <1.10.0'
-      zod: '>= 3'
-    peerDependenciesMeta:
-      '@modelcontextprotocol/sdk':
-        optional: true
+  dub@0.66.1:
+    resolution: {integrity: sha512-a3XlK1R7Pnfj33sB7Hpcl0lidrX3Rq46ZTQN48eCoMj+2QIumWoOZsEnAIP6qfEtvGuNCaDfCzfMh0Im2zyo5g==}
 
   electron-to-chromium@1.5.143:
     resolution: {integrity: sha512-QqklJMOFBMqe46k8iIOwA9l2hz57V2OKMmP5eSWcUvwx+mASAsbU+wkF1pHjn9ZVSBPrsYWr4/W/95y5SwYg2g==}
@@ -1658,7 +1651,7 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
 
-  dub@0.61.8(zod@3.24.4):
+  dub@0.66.1:
     dependencies:
       zod: 3.24.4
 
