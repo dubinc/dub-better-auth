@@ -39,7 +39,7 @@ describe("dub", async () => {
     expect(mockTrackLead).toHaveBeenCalledWith({
       clickId: "123",
       eventName: "Sign Up",
-      externalId: response.user.id,
+      customerExternalId: response.user.id,
       customerName: response.user.name,
       customerEmail: response.user.email,
       customerAvatar: response.user.image,
