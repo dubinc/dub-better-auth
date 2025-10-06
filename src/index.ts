@@ -47,7 +47,7 @@ export interface DubConfig {
   };
 }
 
-export const dubAnalytics = (opts: DubConfig) => {
+export const dubAnalytics = (opts: DubConfig): BetterAuthPlugin => {
   const dub = opts.dubClient;
   const oauth = opts.oauth
     ? genericOAuth({
@@ -131,5 +131,5 @@ export const dubAnalytics = (opts: DubConfig) => {
         },
       };
     },
-  } satisfies BetterAuthPlugin;
+  };
 };
