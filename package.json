@@ -1,6 +1,6 @@
 {
   "name": "@dub/better-auth",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Dub Better Auth Plugin",
   "scripts": {
     "build": "unbuild"
@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "better-auth": "^1.2.7",
-    "dub": "^0.66.1",
+    "dub": "^0.66.5",
     "typescript": "^5.5.4",
     "unbuild": "^3.5.0",
     "vitest": "^3.1.3"
